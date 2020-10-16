@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+            background-color: midnightblue;
+            color: white;
+            text-align: center;
+        }
+        .cent {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .carder {
+            border: 2px solid #000000;
+            border-radius: 15px;
+            margin: auto;
+            margin-top: 50px;
+            padding: 15px;
+            background: linear-gradient(35deg, slategray, silver, slategray);
+            color: black;
+        }
+        .card {
+            border: 2px solid #000000;
+            border-radius: 15px;
+            margin: auto;
+            width: 30%;
+            padding: 15px;
+            background: linear-gradient(35deg, slategray, silver, slategray);
+            color: black;
+        }
+        table, td, th {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid black;
+            border-collapse: collapse;
+            border-right: none;
+            border-left: none;
+            border-top: none;
+        }
+        .shad {
+            font-size: 60px;
+            text-shadow: 0 0 8px white;
+        }
+        .shadS {
+            font-size: 60px;
+            text-shadow: 0 0 8px white;
+        }
+    </style>
+    <head>
+        <title>IPLive Player Stats</title>
+    </head>
+    <body>
+        <!--o_c=x.display_orange_cap()
+    p_c=x.display_purple_cap()
+    b_e=x.best_economy()
+    s_r=x.best_strike_rate()
+    b_sr=x.bowling_strike_rate()
+    b_a=x.bowling_average()
+    a=x.batting_average()-->
+        <h2 class="shad">Top Players</h2>
+        <div class="card">
+            <h3>Orange Cap: {{oc}}</h3>
+            <h3>Purple Cap: {{pc}}</h3>
+            <h3>Best Economy: {{be}}</h3>
+            <h3>Best Batting Strke Rate: {{sr}}</h3>
+            <h3>Best Bowling Strike Rate: {{bsr}}</h3>
+            <h3>Best Batting Average: {{av}}</h3>
+            <h3>Best Bowling Average: {{bav}}</h3>
+        </div>
+
+       <h2 class="shadS">Player Statistics</h2>
+        <form action='/playerstats/' method='POST'>
+            Player: <input type='text' name='plyr' id='plyr'>
+            Team:  
+            <select id="team" name="team">
+              <option value="MI">MI</option>
+              <option value="CSK">CSK</option>
+              <option value="RCB">RCB</option>
+              <option value="DC">DC</option>
+              <option value="KXIP">KXIP</option>
+              <option value="SRH">SRH</option>
+              <option value="KKR">KKR</option>
+              <option value="RR">RR</option>
+            </select> 
+            <input type='submit' value="Search">
+        </form>
+
+        <table class="carder">
+            <tr>
+                <th>Name</th>
+                <th>Team</th>
+                <th>Nationality</th>
+                <th>Stats</th>
+            </tr>
+            {% for i in pls %}
+                <tr>
+                    <td>{{i[1]}}</td>
+                    {% for j in ts %}
+                        {% if i[0][:2:] ==j[:2:] %} 
+                            <td>{{j}}</td>
+                        {% endif %}
+                    {% endfor %}
+                    <td>{{i[3]}}</td>
+                    <td><a href="/playerstats/player?id={{i[0]}}">Stats</a></td>
+                </tr>
+            {% endfor %}
+    </table>
+    </body>
+</html>

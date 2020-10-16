@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+            background-color: midnightblue;
+            color: white;
+            text-align: center;
+        }
+        table, td, th {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid black;
+            border-collapse: collapse;
+            border-right: none;
+            border-left: none;
+            border-top: none;
+        }
+        .cent {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card {
+            border: 2px solid #000000;
+            border-radius: 15px;
+            margin: auto;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            width: 30%;
+            padding: 15px;
+            background: linear-gradient(35deg, slategray, silver, slategray);
+            color: black;
+        }
+        .carder {
+            border: 2px solid #000000;
+            border-radius: 15px;
+            margin: 50px;
+            padding: 15px;
+            background: linear-gradient(35deg, slategray, silver, slategray);
+            color: black;
+        }
+        .shad {
+            font-size: 48px;
+            text-shadow: 0 0 8px white;
+        }
+        .shadS {
+            font-size: 30px;
+            text-shadow: 0 0 16px white;
+            color: black;
+        }
+    </style>
+    <head>
+        <title>
+            IPLive Scores
+        </title>
+    </head>
+    <body>
+        <h2 class="shad">Score Instances Of 
+            {% for i in scores %}
+                {{i}} 
+            {% endfor %}
+        </h2>
+        <form action='/archive/score?id={{match}}' method='POST'>
+            Over: 
+            <input type='text' name='over' id='over'>
+            Team:  
+            <select id="team" name="team">
+                {% for i in scores %}
+                <option value={{i}}>{{i}}</option>
+                {% endfor %}
+            </select> 
+            <input type='submit' value="Search">
+        </form>
+        <div class="card">
+            <h2 style="text-align:center">Requested Score</h2>
+            {% if score|length  == 0 %}
+            <h3 style="text-align:center">No Score Request</h3>
+            {% else %}
+            <h2 style="text-align:center">{{score[5]}} : {{score[6]}}/{{score[7]}}</h2>
+            <h2 style="text-align:center">Overs: {{score[0]}} &emsp; &emsp; &emsp; &emsp; CRR:&emsp;{{score[-2]}}</h2>
+            
+            <h4 style="text-align:center">Batsmen: {{score[2]}}  &emsp; & &emsp;{{score[3]}}</h4>
+            <h4 style="text-align:center">Bowler: {{score[4]}}  &emsp;&emsp;Commentary:&emsp; {{score[-1]}}</h4>
+            {% endif %}
+            {% for j in scores %}
+            <h3>{{ j }}</h3>
+        </div>
+        <div class="carder">
+            <table class="cent">
+                <tr>
+                    <th>Team</th>
+                    <th>Over</th>
+                    <th>Runs</th>
+                    <th>Wickets</th>
+                    <th>Batsman</th>
+                    <th>Batsman</th>
+                    <th>Bowler</th>
+                    <th>CRR</th>
+                    <th>RRR</th>
+                    <th>Runs Required</th>
+                    <th>Commentary</th>
+                </tr>
+                {% for i in scores[j] %}
+                    <tr>
+                        <td>{{i[5]}}</td>
+                        <td>{{i[0]}}</td>
+                        <td>{{i[6]}}</td>
+                        <td>{{i[7]}}</td>
+                        <td>{{i[2]}}</td>
+                        <td>{{i[3]}}</td>
+                        <td>{{i[4]}}</td>
+                        <td>{{i[-2]}}</td>
+                        <td>{{i[-3]}}</td>
+                        <td>{{i[-4]}}</td>
+                        <td>{{i[-1]}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            {% endfor %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+            background-color: midnightblue;
+            color: white;
+            text-align: center;
+        }
+        .cent {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card {
+            border: 2px solid #000000;
+            border-radius: 15px;
+            margin: auto;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            width: 30%;
+            padding: 15px;
+            background: linear-gradient(35deg, slategray, silver, slategray);
+            color: black;
+        }
+        .shad {
+            font-size: 60px;
+            text-shadow: 0 0 8px white;
+        }
+        .shadS {
+            font-size: 30px;
+            text-shadow: 0 0 16px white;
+            color: black;
+        }
+    </style>
+    <head>
+        <title>IPLive {{ player[1] }} </title>
+    </head>
+    <body>
+        <h1 class="shad">{{player[1]}}</h1>
+        <div class="card">
+            <h4>Role: {{player[2]}}</h4>
+            <h4>Nationality: {{player[3]}}</h4>
+            {% for j in ts %}
+                {% if j[:2:]==player[0][:2:] %}
+                <h4>Team: {{j}}</h4>
+                {% endif %}
+            {% endfor %}
+            <h4>Matches Played: {{player[-4]}}</h4>
+        </div>
+        <div class="card">
+            <h2 class="shadS">Batting Stats</h2>
+            <h4>Runs: {{player[4]}}</h4>
+            <h4>Balls Faced: {{player[-2]}}</h4>
+            <h4>Average: {{player[5]}}</h4>
+            <h4>Strike Rate: {{player[6]}}</h4>
+        </div>
+        <div class="card">
+            <h2 class="shadS">Bowling Stats</h2>
+            <h4>Wickets: {{player[7]}}</h4>
+            <h4>Overs Bowled: {{player[-1]}}</h4>
+            <h4>Runs Conceded: {{player[-3]}}</h4>
+            <h4>Economy: {{player[8]}}</h4>
+            <h4>Average: {{player[9]}}</h4>
+            <h4>Strike Rate: {{player[10]}}</h4>
+        </div>
+    </body>
+</html>

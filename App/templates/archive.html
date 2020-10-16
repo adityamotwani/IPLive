@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+            background-color: midnightblue;
+            color: white;
+            text-align: center;
+        }
+        .cent {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .carder {
+            border: 2px solid #000000;
+            border-radius: 15px;
+            margin: 50px;
+            padding: 15px;
+            background: linear-gradient(35deg, slategray, silver, slategray);
+            color: black;
+        }
+        table, td, th {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid black;
+            border-collapse: collapse;
+            border-right: none;
+            border-left: none;
+            border-top: none;
+        }
+        .shad {
+            font-size: 60px;
+            text-shadow: 0 0 8px white;
+        }
+    </style>
+    <head>
+        <title>
+            IPLive Archives
+        </title>  
+    </head>
+    <body>
+        <h1 class="shad">Archives</h1>
+        <div class="carder">
+            <table class="cent sep">
+                <tr>
+                    <th>Date</th>
+                    <th>Match</th>
+                    <th>Venue</th>
+                    <th>Result</th>
+                    <th>Match Centre</th>
+                    <th>Score Instances</th>
+                    <!--<th>Ball By Ball</th>-->
+                </tr>
+                {% for i in mtb %}
+                    <tr>
+                        <td>{{i['date']}}</td>
+                        <td>{{i['team1']}} V/s {{i['team2']}}</td>
+                        <td>{{i['stad']}}</td>
+                        <td>{{i['result']}}</td>
+                        <td><a href="/archive/match?id={{i['id']}}">Match Centre</a></td>
+                        <td><a href="/archive/score?id={{i['id']}}" >Score Instances</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            </div>
+    </body>
+</html>

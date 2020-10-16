@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+            background-color: midnightblue;
+            color: white;
+            text-align: center;
+        }
+        .cent {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .carder {
+            border: 2px solid #000000;
+            border-radius: 15px;
+            margin: 50px;
+            padding: 15px;
+            background: linear-gradient(35deg, slategray, silver, slategray);
+            color: black;
+        }
+        .card {
+            border: 2px solid #000000;
+            border-radius: 15px;
+            margin: auto;
+            width: 30%;
+            padding: 15px;
+            background: linear-gradient(35deg, slategray, silver, slategray);
+            color: black;
+        }
+        table, td, th {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid black;
+            border-collapse: collapse;
+            border-right: none;
+            border-left: none;
+            border-top: none;
+        }
+        .shad {
+            font-size: 60px;
+            text-shadow: 0 0 8px white;
+        }
+        .shadS {
+            font-size: 30px;
+            text-shadow: 0 0 8px white;
+        }
+    </style>
+    <head>
+        <title>
+            IPLive Archives
+        </title>  
+    </head>
+    <body>
+        {% if fs|length >0 %}
+        <h2 class="cent shad">Final Score</h2>
+        <div class="carder">
+            <h2 style="text-align:center">{{fs['inning2']['team']}} : {{fs['inning2']['runs']}}/{{fs['inning2']['wickets']}} &emsp; &emsp; &emsp; &emsp;{{fs['inning1']['team']}} : {{fs['inning1']['runs']}}/{{fs['inning1']['wickets']}}</h2>
+            <h2 style="text-align:center">Overs: {{fs['inning2']['over_ball']}} &emsp; &emsp; &emsp; &emsp;Overs: {{fs['inning1']['over_ball']}}</h2>
+            <h4 style="text-align:center">{{fs['inning2']['bat1']}} &emsp;{{fs['inning2']['run1']}}({{fs['inning2']['ball_faced_1']}}) &emsp; &emsp; &emsp;&emsp;&emsp;&emsp; &emsp;{{fs['inning2']['bowl']}}&emsp;{{fs['inning2']['bowl_wick']}}/{{fs['inning2']['balls_run']}}</h4>
+            <h4 style="text-align:center">{{fs['inning2']['bat2']}} &emsp;{{fs['inning2']['run2']}}({{fs['inning2']['ball_faced_2']}}) &emsp; &emsp; &emsp;&emsp;&emsp;&emsp; CRR:&emsp;{{fs['inning2']['crr']}}</h4>
+        </div>
+        {% endif %}
+
+
+        <h2 class="cent shad">Scorecards</h2>
+        <div class="carder">
+            <h3 class="cent shadS">{{batt[0]}}</h3>
+            <table class="cent">
+                <tr class="cent">
+                    <th>Position</th>
+                    <th>Batsman</th>
+                    <th> </th>
+                    <th>Fours</th>
+                    <th>Sixes</th>
+                    <th>Boundaries</th>
+                    <th>Runs</th>
+                    <th>Balls</th>
+                    <th>Strike Rate</th>
+                </tr>
+                {% for i in batt[1] %}
+                <tr>
+                    <td>{{i['pos']}}</td>  
+                    <td>{{i['name']}}</td>
+                    <td>{{i['stat']}}</td>
+                    <td>{{i['4s']}}</td>
+                    <td>{{i['6s']}}</td>
+                    <td>{{i['bounds']}}</td>
+                    <td>{{i['runs']}}</td>
+                    <td>{{i['ball']}}</td>
+                    <td>{{i['sr']}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="carder">
+            <h3 class="cent shadS">{{batt[2]}}</h3>
+            <table class="cent">
+                <tr>
+                    <th>Position</th>
+                    <th>Batsman</th>
+                    <th> </th>
+                    <th>Fours</th>
+                    <th>Sixes</th>
+                    <th>Boundaries</th>
+                    <th>Runs</th>
+                    <th>Balls</th>
+                    <th>Strike Rate</th>
+                </tr>
+                {% for i in batt[3] %}
+                <tr>
+                    <td>{{i['pos']}}</td>  
+                    <td>{{i['name']}}</td>
+                    <td>{{i['stat']}}</td>
+                    <td>{{i['4s']}}</td>
+                    <td>{{i['6s']}}</td>
+                    <td>{{i['bounds']}}</td>
+                    <td>{{i['runs']}}</td>
+                    <td>{{i['ball']}}</td>
+                    <td>{{i['sr']}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        
+        <hr>
+
+
+        <h2 class="cent shadS">Fall Of Wickets</h2>
+        <div class="carder">
+            <h3 class="cent shadS">{{wt[0]}}</h3>
+            <table class="cent">
+                <tr>
+                    <th>Overs</th>
+                    <th>Batsman</th>
+                    <th>Score</th>
+                </tr>
+                {% for i in wt[1] %}
+                <tr>
+                    <td>{{i['over']}}</td>  
+                    <td>{{i['name']}}</td>
+                    <td>{{i['score']}}/{{i['wicks']}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="carder">
+            <h3 class="cent shadS">{{wt[2]}}</h3>
+            <table class="cent">
+                <tr>
+                    <th>Overs</th>
+                    <th>Batsman</th>
+                    <th>Score</th>
+                </tr>
+                {% for i in wt[3] %}
+                <tr>
+                    <td>{{i['over']}}</td>  
+                    <td>{{i['name']}}</td>
+                    <td>{{i['score']}}/{{i['wicks']}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+
+
+        <hr>
+
+
+        <h2 class="cent shadS">Bowling</h2>
+        <div class="card">
+            {% if bt[0]['team']== batt[0][:2:] %}
+                <h3 class="cent">{{batt[0]}}</h3>
+            {% else %}
+                <h3 class="cent">{{batt[2]}}</h3>
+                {% endif %}
+        </div>
+        <div class="carder">
+            <table class="cent">
+                <tr>
+                    <th>Bowler</th>
+                    <th>Overs</th>
+                    <th>Runs</th>
+                    <th>Wickets</th>
+                    <th>Economy</th>
+                </tr>
+                {% for i in bt %}
+                    {% if i['team']==bt[0]['team'] %}
+                        <tr>
+                            <td>{{i['name']}}</td>
+                            <td>{{i['over']}}</td>
+                            <td>{{i['runs']}}</td>
+                            <td>{{i['wicks']}}</td>
+                            <td>{{i['econ']}}</td>
+                        </tr>
+                    {%endif%}
+                {% endfor %}
+            </table>
+        </div>
+        <div class="card">
+            {% if bt[0]['team']== batt[0][:2:] %}
+                <h3 class="cent">{{batt[2]}}</h3>
+            {% else %}
+                <h3 class="cent">{{batt[0]}}</h3>
+            {% endif %}
+        </div>
+        <div class="carder">
+            <table class="cent">
+                <tr>
+                    <th>Bowler</th>
+                    <th>Overs</th>
+                    <th>Runs</th>
+                    <th>Wickets</th>
+                    <th>Economy</th>
+                </tr>
+                {% for i in bt %}
+                        {% if i['team']!=bt[0]['team'] %}
+                            <tr>
+                                <td>{{i['name']}}</td>
+                                <td>{{i['over']}}</td>
+                                <td>{{i['runs']}}</td>
+                                <td>{{i['wicks']}}</td>
+                                <td>{{i['econ']}}</td>
+                            </tr>
+                        {%endif%}
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>
