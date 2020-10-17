@@ -169,7 +169,8 @@ def do_it():
         pass
     try:
         x.insert_bowler_details()
-    except:
+    except Exception as e:
+        print("Bowler not going",e)
         pass
     try:
         x.get_commentary()
@@ -356,20 +357,31 @@ def db_to_scr1(match_id,team,over):
     sql="SELECT * FROM SCORE WHERE MATCH_ID='"+match_id+"' AND TEAM='"+team+"' AND OVER_BALL='"+over+"';"
     iplcursor = myconn.cursor()
     iplcursor.execute(sql)
-    score=iplcursor.fetchall()[0]
+    score=[]
+    try:    
+        score=iplcursor.fetchall()[0]
+    except:
+        pass
     score=list(score)
 
-    sql4="SELECT PLAYER_NAME FROM PLAYER WHERE PLAYER_ID='"+score[2]+"';"
-    iplcursor.execute(sql4)
-    score[2]=iplcursor.fetchall()[0][0]
-        
-    sql41="SELECT PLAYER_NAME FROM PLAYER WHERE PLAYER_ID='"+score[3]+"';"
-    iplcursor.execute(sql41)
-    score[3]=iplcursor.fetchall()[0][0]
-
-    sql5="SELECT PLAYER_NAME FROM PLAYER WHERE PLAYER_ID='"+score[4]+"';"
-    iplcursor.execute(sql5)
-    score[4] = iplcursor.fetchall()[0][0]
+    try:
+        sql4="SELECT PLAYER_NAME FROM PLAYER WHERE PLAYER_ID='"+score[2]+"';"
+        iplcursor.execute(sql4)
+        score[2]=iplcursor.fetchall()[0][0]
+    except:
+        pass
+    try:    
+        sql41="SELECT PLAYER_NAME FROM PLAYER WHERE PLAYER_ID='"+score[3]+"';"
+        iplcursor.execute(sql41)
+        score[3]=iplcursor.fetchall()[0][0]
+    except:
+        pass
+    try:
+        sql5="SELECT PLAYER_NAME FROM PLAYER WHERE PLAYER_ID='"+score[4]+"';"
+        iplcursor.execute(sql5)
+        score[4] = iplcursor.fetchall()[0][0]
+    except:
+        pass
     #print(score)
     return score
 

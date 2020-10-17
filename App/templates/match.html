@@ -55,10 +55,10 @@
         {% if fs|length >0 %}
         <h2 class="cent shad">Final Score</h2>
         <div class="carder">
-            <h2 style="text-align:center">{{fs['inning2']['team']}} : {{fs['inning2']['runs']}}/{{fs['inning2']['wickets']}} &emsp; &emsp; &emsp; &emsp;{{fs['inning1']['team']}} : {{fs['inning1']['runs']}}/{{fs['inning1']['wickets']}}</h2>
+            <h2 style="text-align:center">{{fs['inning2']['team']}} : {{fs['inning2']['runs']}}/{{fs['inning2']['wickets']}} &emsp; &emsp; &emsp; &emsp;{{fs['inning1']['team']}} : {{fs['inning1']['runs']}}/{{fs['inning1']['wicket']}}</h2>
             <h2 style="text-align:center">Overs: {{fs['inning2']['over_ball']}} &emsp; &emsp; &emsp; &emsp;Overs: {{fs['inning1']['over_ball']}}</h2>
-            <h4 style="text-align:center">{{fs['inning2']['bat1']}} &emsp;{{fs['inning2']['run1']}}({{fs['inning2']['ball_faced_1']}}) &emsp; &emsp; &emsp;&emsp;&emsp;&emsp; &emsp;{{fs['inning2']['bowl']}}&emsp;{{fs['inning2']['bowl_wick']}}/{{fs['inning2']['balls_run']}}</h4>
-            <h4 style="text-align:center">{{fs['inning2']['bat2']}} &emsp;{{fs['inning2']['run2']}}({{fs['inning2']['ball_faced_2']}}) &emsp; &emsp; &emsp;&emsp;&emsp;&emsp; CRR:&emsp;{{fs['inning2']['crr']}}</h4>
+            <h4 style="text-align:center">{{fs['inning2']['bat1']}} &emsp;{{fs['inning2']['run1']}} &emsp; &emsp; &emsp;&emsp;&emsp;&emsp; &emsp;{{fs['inning2']['bowl']}}&emsp;{{fs['inning2']['bowl_wick']}}/{{fs['inning2']['balls_run']}}</h4>
+            <h4 style="text-align:center">{{fs['inning2']['bat2']}} &emsp;{{fs['inning2']['run2']}} &emsp; &emsp; &emsp;&emsp;&emsp;&emsp; CRR:&emsp;{{fs['inning2']['crr']}}</h4>
         </div>
         {% endif %}
 
@@ -133,13 +133,13 @@
                 <tr>
                     <th>Overs</th>
                     <th>Batsman</th>
-                    <th>Score</th>
+                    <th>Wicket No.</th>
                 </tr>
                 {% for i in wt[1] %}
                 <tr>
                     <td>{{i['over']}}</td>  
                     <td>{{i['name']}}</td>
-                    <td>{{i['score']}}/{{i['wicks']}}</td>
+                    <td>{{i['wicks']}}</td>
                 </tr>
                 {% endfor %}
             </table>
@@ -150,13 +150,13 @@
                 <tr>
                     <th>Overs</th>
                     <th>Batsman</th>
-                    <th>Score</th>
+                    <th>Wicket No.</th>
                 </tr>
                 {% for i in wt[3] %}
                 <tr>
                     <td>{{i['over']}}</td>  
                     <td>{{i['name']}}</td>
-                    <td>{{i['score']}}/{{i['wicks']}}</td>
+                    <td>{{i['wicks']}}</td>
                 </tr>
                 {% endfor %}
             </table>

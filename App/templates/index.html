@@ -60,7 +60,7 @@
     </style>
     <head>
         <title>IPLive</title>
-        <meta http-equiv="refresh" content="20" >
+        <meta http-equiv="refresh" content="30" >
     </head>
     <body>
         <h1 class="shad">IPLive</h1>
@@ -164,13 +164,13 @@
                     <tr>
                         <th>Overs</th>
                         <th>Batsman</th>
-                        <th>Score</th>
+                        <th>Wicket No.</th>
                     </tr>
                     {% for i in wt[1] %}
                     <tr>
                         <td>{{i['over']}}</td>  
                         <td>{{i['name']}}</td>
-                        <td>{{i['score']}}/{{i['wicks']}}</td>
+                        <td>{{i['wicks']}}</td>
                     </tr>
                     {% endfor %}
                 </table>
@@ -182,13 +182,13 @@
                     <tr>
                         <th>Overs</th>
                         <th>Batsman</th>
-                        <th>Score</th>
+                        <th>Wicket No.</th>
                     </tr>
-                    {% for i in batt[3] %}
+                    {% for i in wt[3] %}
                     <tr>
                         <td>{{i['over']}}</td>  
                         <td>{{i['name']}}</td>
-                        <td>{{i['score']}}/{{i['wicks']}}</td>
+                        <td>{{i['wicks']}}</td>
                     </tr>
                     {% endfor %}
                 </table>

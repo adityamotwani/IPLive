@@ -446,11 +446,11 @@ class IPLive:
             if over != 0:
                 econ = str(int(i['runs']) / over)
             avg="NULL"
-            if i['wickets']!=0:
-                avg=str(i['runs']/i['wickets'])
+            if int(i['wickets'])!=0:
+                avg=str(int(i['runs'])/int(i['wickets']))
             sr="NULL"
-            if i['wickets']!=0:
-                sr=str(i['overs']*6/i['wickets'])
+            if int(i['wickets'])!=0:
+                sr=str(int(i['overs'])*6/int(i['wickets']))
             ins = "INSERT INTO BOWLER VALUES ((SELECT PLAYER_ID FROM PLAYER WHERE PLAYER_NAME LIKE '%" + i[
                 'name'] + "%' AND PLAYER_ID LIKE'" + teamname(
                 sc['scorecard'][0]['bowlteam']) + "%'),'" + self.match_id + "'," + i[
